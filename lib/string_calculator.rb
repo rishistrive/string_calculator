@@ -3,6 +3,10 @@ class StringCalculator
     return 0 if string.empty?
 
     numbers = get_numbers(string)
+    negative_numbers = find_negative_numbers(numbers)
+
+    raise create_negative_error_message(negative_numbers) unless negative_numbers.empty?
+
     numbers.sum
   end
 
@@ -20,5 +24,13 @@ class StringCalculator
 
   def check_delimiter?(string)
     string.start_with?('//')
+  end
+
+  def find_negative_numbers(numbers)
+    numbers.select(&:negative?)
+  end
+
+  def create_negative_error_message(numbers)
+    "negative numbers not allowed #{numbers.join(',')}"
   end
 end
