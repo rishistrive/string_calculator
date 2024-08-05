@@ -2,6 +2,6 @@ class StringCalculator
   def add(string)
     return 0 if string.empty?
 
-    string.to_i
+    string.split(',').map(&:to_i).sum
   end
 end
