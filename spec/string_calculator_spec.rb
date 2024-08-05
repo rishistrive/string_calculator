@@ -30,6 +30,10 @@ RSpec.describe StringCalculator do
         calculator = StringCalculator.new
         expect(calculator.add("1\n2,3")).to eq(6)
       end
+
+      it 'returns the sum of numbers with multiple delimiters' do
+        expect(subject.add("//|\n1|2|3")).to eq(6)
+      end
     end
   end
 end
